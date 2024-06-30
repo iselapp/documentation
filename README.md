@@ -25,17 +25,15 @@ The ISEL APP simplifies the process of accessing essential academic information.
 ## Folder Structure
 
 public_iselapp/
-├── config/
-│ └── [web scraping JSON configurations]
-├── database/
-│ ├── siges/
-│ │ └── [Excel extraction and importing scripts]
-│ ├── supabase/
-│ │ └── [SQL files for database management]
-│ └── web/
-│ └── [Web scraper scripts]
-└── mobile/
-└── [React Native mobile application]
+├───config
+│   ├───siges
+│   └───web
+├───database
+│   ├───siges
+│   ├───supabase
+│   └───web
+├───output
+└───scraper
 
 
 ## Getting Started
