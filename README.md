@@ -25,15 +25,7 @@ The ISEL APP simplifies the process of accessing essential academic information.
 ## Folder Structure
 
 public_iselapp/
-├───config
-│   ├───siges
-│   └───web
-├───database
-│   ├───siges
-│   ├───supabase
-│   └───web
-├───output
-└───scraper
+#todo
 
 
 ## Getting Started
