@@ -1,6 +1,6 @@
 # ISEL APP Supabase Backend
 
-This repository contains the Supabase configuration for the ISEL APP project.
+This file contains the Supabase configuration for the ISEL APP project.
 
 ## SQL Files
 
