@@ -64,7 +64,7 @@ To set up database triggers:
 
 - [Supabase Documentation](https://supabase.com/docs)
 - [Supabase CLI](https://supabase.com/docs/reference/cli)
-- [Supabase JavaScript Client](https://supabase.com/docs/reference/python)
+- [Supabase Python Client](https://supabase.com/docs/reference/python)
 
 ## Troubleshooting
 
