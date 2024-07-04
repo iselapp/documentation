@@ -93,10 +93,6 @@ The script provides real-time progress updates and a summary table at the end, s
 - If you encounter RLS policy violations, you may need to temporarily disable RLS or adjust the policies for the import process.
 - Ensure that the Supabase key used has the necessary permissions for the operations being performed.
 
-## Contributing
-
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](link_to_issues) if you want to contribute.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](../../LICENSE)
