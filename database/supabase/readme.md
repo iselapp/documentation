@@ -1,4 +1,4 @@
-# ISEL APP Supabase Backend
+# ISEL APP Supabase Configuration
 
 This file contains the Supabase configuration for the ISEL APP project.
 
