@@ -1,6 +1,6 @@
 # ISEL APP
 
-The ISEL APP is a mobile application designed to streamline access to critical information for the Lisbon School of Engineering (ISEL) university community. This repository contains all the resources and documentation needed to understand and to the project.
+The ISEL APP is a mobile application designed to streamline access to critical information for the Lisbon School of Engineering (ISEL) university community. This repository contains all the resourced needed to understand project's configurations.
 
 ## Table of Contents
 
