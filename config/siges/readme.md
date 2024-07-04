@@ -84,3 +84,8 @@ In this example:
 - Ensure that the Supabase table names and column names in this configuration match your actual Supabase database schema.
 - All Excel columns not specified in the `column_mappings` will be imported using their original names and assumed to be of type `varchar`.
 - Make sure the primary keys specified here match the primary keys in your Supabase tables.
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE)
