@@ -39,7 +39,7 @@ This Python script imports data from Excel files into Supabase tables, supportin
 
 Create a JSON configuration file (e.g., `config.json`) with the following structure:
 > [!NOTE]
-> Excel columns with the same name as the supabase tables don't need to be added to this JSON configuration file.
+> Excel columns (case insensitive) with the same name as the supabase tables don't need to be added to this JSON configuration file.
 
 ```json
 {
