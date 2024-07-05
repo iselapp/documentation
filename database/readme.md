@@ -2,41 +2,103 @@
 
 This directory contains scripts and configuration files for managing the Supabase database used by the ISEL APP.
 
+## Directory Structure
+
+```
+├── siges/
+├── supabase/
+└── readme.md (this file)
+```
+
 ## Subdirectories
 
-- **siges/**: Scripts for extracting and importing data from the SIGES system.
-- **supabase/**: SQL files for managing the Supabase database.
-- **web/**: Web scraper scripts for populating the database.
+- **siges/**: Scripts for extracting and importing data from the SIGES system. This includes Excel files with data extracted from SIGES and a Python script to insert data into the database.
+- **supabase/**: SQL files for managing the Supabase database structure.
 
-## Tables
+## Data Import Methods
 
-### Inserted by Web Scraping
+### Web Scraping
 
-- `conteudo` (news, information, events)
-- `curso` (course)
-- `departamento` (department)
+- Tables: 
+  - `atendimento` (office hours)
+  - `contacto_email` (email contacts)
+  - `contacto_telefone` (phone contacts)
+  - `conteudo_evento` (event content)
+  - `conteudo_informacao` (information content)
+  - `conteudo_noticia` (news content)
+  - `curso_licenciatura` (bachelor's degree courses)
+  - `curso_mestrado` (master's degree courses)
+  - `departamento` (department)
+  - `distribuicao_ects` (ECTS distribution)
+  - `plano_curricular_licenciaturas` (bachelor's degree curriculum)
+- Tool: Web scraper script
+- Configuration: JSON files for web scraping configurations
 
-### Inserted by Excel
+### Excel Import
 
-- `inscricao` (enrollment)
-- `ruc` (RUC)
-- `sala` (room)
-- `utilizador` (user)
+- Tables: 
+  - `inscricao` (enrollment)
+  - `ruc` (RUC)
+  - `sala` (room)
+  - `utilizador` (user)
+  - `disciplina` (subject)
+  - `edificio` (building)
+- Tool: Excel to Supabase Importer script
+- Configuration: JSON file with custom mapping configuration (e.g., `config.json`)
 
-### Inserted Manually
+### User Input (Frontend)
 
-- `edificio` (building) - Suggestion to use an Excel file
+- Tables: `horario` (schedule)
 
-### Inserted by User (Frontend)
+### Backend Processing
 
-- `horario` (schedule)
+- Tables: `notificacao` (notification)
 
-### Inserted by Backend
+## Excel to Supabase Importer
 
-- `notificacao` (notification)
+This Python script imports data from Excel files into Supabase tables, supporting both insertion of new records and updating of existing ones. The script is located in the parent directory.
 
-## Libraries
+### Features
 
-- **Pandas**
-- **Supabase**
-- **openpyxl**
+- Process multiple Excel files
+- Map Excel sheets to Supabase tables
+- Custom column mapping
+- Data type conversion
+- Upsert functionality (insert or update based on primary keys)
+- Progress tracking and colorized console output
+- Summary report of imported data
+
+### Usage
+
+```
+python excel_to_supabase.py <config file path> <excel files>
+```
+
+For detailed usage instructions use:
+
+```
+python excel_to_supabase.py --help
+```
+
+## Setup and Configuration
+
+1. Install required packages:
+   ```
+   pip install -r requirements.txt
+   ```
+2. Set up a `.env` file in the parent directory with your Supabase credentials:
+   ```
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_KEY=your_supabase_key
+   ```
+3. Create necessary configuration files (JSON) for web scraping and Excel imports.
+
+## Notes and Troubleshooting
+
+- Ensure that your Supabase project has the necessary tables and columns set up before running imports.
+- The scripts use the service role key, which bypasses RLS policies. Ensure proper security measures are in place.
+- If you encounter RLS policy violations, you may need to temporarily disable RLS or adjust the policies for the import process.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
