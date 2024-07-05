@@ -1,6 +1,6 @@
 # Config Structure
 
-This folder is organized into the following directories and files:
+This directory is organized into the following directories and files:
 
 ```
 ├── siges/
@@ -16,7 +16,7 @@ This folder is organized into the following directories and files:
 
 ### Files
 
-- `readme.md`: This file (the one you're currently reading) provides an overview of the folder structure and content.
+- `readme.md`: This file (the one you're currently reading) provides an overview of the directory structure and content.
 
 ## License
 
