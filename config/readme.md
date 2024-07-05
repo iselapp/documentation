@@ -5,7 +5,7 @@ This directory is organized into the following directories and files:
 ```
 ├── siges/
 ├── web/
-└── readme.md
+└── readme.md (this file)
 ```
 
 ### Directories
