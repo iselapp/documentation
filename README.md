@@ -7,13 +7,12 @@ The ISEL APP is a mobile application designed to streamline access to critical i
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Folder Structure](#folder-structure)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
-- [Data Management](#data-management)
+- [GitHub Actions](#github-actions)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -23,7 +22,6 @@ The ISEL APP simplifies the process of accessing essential academic information.
 
 ## Features
 
-- Personalized notifications
 - Access to academic records
 - Grade simulations
 - Virtual student card
@@ -40,21 +38,6 @@ The ISEL APP simplifies the process of accessing essential academic information.
 - **Pandas, openpyxl**: For handling Excel data
 - **BeautifulSoup**: For web scraping
 
-## Folder Structure
-
-```
-public_iselapp/
-├── app/                      # React Native mobile app
-├── config/
-│   ├── siges/              # Configuration file for SIGES excel files
-│   ├── web/               # Configuration files for web scraping
-├── database/
-│   ├── siges/             # SIGES data extraction and processing
-│   ├── supabase/      # Supabase configuration and scripts
-├── .env                     # Environment variables
-├── requirements.txt     # Python dependencies
-└── README.md            # This file
-```
 
 ## Getting Started
 
@@ -64,38 +47,29 @@ public_iselapp/
 - Python 3.12 (only version tested)
 - Supabase account
 - Android Studio (for Android Virtual Device) or Android w/ USB cable
-- IDE for Development (e.g. VSCode)
+- IDE for Development (e.g., VSCode)
 
 ### Configuration
 
 1. Fill in your Supabase credentials and other configuration details in your `.env` file.
 
 2. Configure Supabase:
-   - Follow the instructions in the [here](../main/database/supabase/readme.md) file to set up your Supabase account, project and tables.
+   - Follow the instructions in the [database/supabase/readme.md](database/supabase/readme.md) file to set up your Supabase account, project, and tables.
 
-## Running the Application
+3. Configure web scraping:
+   - Modify the JSON files in `config/web/` to match the structure of the web pages you want to scrape. See the [config/web/readme.md](config/web/readme.md) file for a detailed guide on configuring the web scraper.
 
-1. Start the mobile application:
+4. Configure Excel import:
+   - Update the `config/siges/config.json` file to map your Excel sheets and columns to the corresponding Supabase tables and columns. Refer to the [config/siges/readme.md](config/siges/readme.md) file for instructions on configuring the Excel to Supabase importer.
 
-   ```bash
-   cd mobile
-   npm run android  # or npm run ios
-   ```
+5. Run `run_scrapers.py`:
+   - Finally run `run_scrapers.py` locally to test the cronjob system manually.
 
-2. Run the web scrapers and data import scripts:
-   ```bash
-   python scraper/scraper.py
-   python scraper/scraping_to_supabase.py
-   python database/siges/excel_to_supabase.py
-   ```
+## GitHub Actions
 
-## Data Management
+The project includes a GitHub Actions workflow (`scraper.yml`) that automates the process of running the web scrapers and updating the scraped data in the repository. The workflow is triggered on a schedule (every hour) or can be run manually.
 
-- Web scraping configurations are located in `config/web/`.
-- Excel data import configurations are in `config/siges/`.
-- To update the database schema, modify the SQL files in `database/supabase/` and apply them to your Supabase project.
-
-For detailed instructions on data management, refer to the README files in each subdirectory of this project.
+Make sure to set the `SUPABASE_URL` and `SUPABASE_KEY` secrets in your repository settings for the workflow to access your Supabase instance.
 
 ## License
 

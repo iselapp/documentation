@@ -10,6 +10,7 @@ This README provides a comprehensive guide to configuring the web scraper for ex
 - [Types](#types)
 - [Examples](#examples)
 - [Usage](#usage)
+- [Available Configuration Files](#available-configuration-files)
 
 ## Configuration Structure
 
@@ -99,14 +100,15 @@ This configuration will:
 2. Run the scraper script with the configuration file as an argument:
 
    ```
-   python scraper.py
+   python scraper.py <config_path>
    ```
 
-3. The script will show all the configuration files available.
-4. After choosing the configuration file the script will execute the scraping instructions and save the results in the specified output directory.
+   Replace `<config_path>` with the path to the desired JSON configuration file.
+
+3. The script will execute the scraping instructions and save the results in the specified output directory.
 
 Remember to adjust the selectors and structure based on the specific website you're scraping.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](../../LICENSE)
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.

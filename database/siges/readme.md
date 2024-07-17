@@ -37,9 +37,27 @@ This Python script imports data from Excel files into Supabase tables, supportin
 
 ## Configuration
 
-Create a JSON configuration file (e.g., `config.json`) with the following structure:
-> [!NOTE]
-> Excel columns (case insensitive) with the same name as the supabase tables don't need to be added to this JSON configuration file.
+1. Create an import configuration JSON file (e.g., `import_config.json`) with the following structure:
+
+```json
+{
+  "excel_config": "path/to/excel_config.json",
+  "import_order": [
+    {
+      "type": "excel",
+      "file": "path/to/excel_file.xlsx",
+      "tables": [
+        {
+          "name": "table_name",
+          "delete_before_import": false
+        }
+      ]
+    }
+  ]
+}
+```
+
+2. Create an Excel configuration JSON file (e.g., `excel_config.json`) with the following structure:
 
 ```json
 {
@@ -57,42 +75,47 @@ Create a JSON configuration file (e.g., `config.json`) with the following struct
 }
 ```
 
-
-
 ## Usage
 
 Run the script from the command line:
 
 ```
-python excel_to_supabase.py config.json [file_names]
+python excel_to_supabase.py import_config.json [excel_file] [--sheet sheet_name]
 ```
 
-- `config.json`: Path to the configuration JSON file
-- `[file_names]`: Excel files to process. Use 'all' to process all Excel files in the current directory, or specify individual file names.
+- `import_config.json`: Path to the import configuration JSON file
+- `excel_file`: Path to the Excel file to process (relative to the project root)
+- `--sheet sheet_name`: (Optional) Name of the specific sheet to process
 
 Examples:
 ```
-python excel_to_supabase.py config.json all
-python excel_to_supabase.py config.json file1.xlsx file2.xlsx
+python excel_to_supabase.py import_config.json database/siges/DADOS_SIGES.xlsx
+python excel_to_supabase.py import_config.json database/siges/DADOS_SIGES.xlsx --sheet utilizador
 ```
 
 ## Output
 
-The script provides real-time progress updates and a summary table at the end, showing the number of inserted, updated, and error rows for each processed file and table, as shown in the following example
-
-![image](https://github.com/rhgui/public_iselapp/assets/29288168/f342ecba-f347-4edf-8fac-f5eaf9c29a07)
+The script provides real-time progress updates and a summary table at the end, showing the number of inserted, updated, and error rows for each processed file and table.
 
 ## Notes
 
 - Ensure that your Supabase project has the necessary tables and columns set up before running the import.
-- The script uses the service role key, which bypasses RLS policies. Ensure proper security measures are in place.
-- Adjust RLS policies or temporarily disable them if you encounter permission issues during import.
+- Ensure RLS policies are disabled.
 
-## Troubleshooting
+## Additional Scripts
 
-- If you encounter RLS policy violations, you may need to temporarily disable RLS or adjust the policies for the import process.
-- Ensure that the Supabase key used has the necessary permissions for the operations being performed.
+### `salas_to_excel.py`
+
+This script parses a list of room names and generates an Excel file (`LS_SALAS.xlsx`) with the parsed room data. The Excel file contains columns for building, floor, room number, and additional information.
+
+To run the script:
+
+```
+python salas_to_excel.py
+```
+
+The generated Excel file can be used as input for the `excel_to_supabase.py` script to import room data into Supabase.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](../../LICENSE)
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
